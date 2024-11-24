@@ -14,4 +14,7 @@ set_prop(misctrl, misctrl_prop)
 # but because we've already booted up we can use the ro.boot properties instead,
 # so we can just ignore the SELinux denial.
 dontaudit misctrl sysfs_dt_firmware_android:dir search;
+dontaudit misctrl sysfs_dt_firmware_android:file { getattr open read };
 dontaudit misctrl vendor_property_type:file read;
+
+

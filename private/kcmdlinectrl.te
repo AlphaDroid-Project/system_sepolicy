@@ -19,4 +19,5 @@ read_fstab(kcmdlinectrl)
 # but because we've already booted up we can use the ro.boot properties instead,
 # so we can just ignore the SELinux denial.
 dontaudit kcmdlinectrl sysfs_dt_firmware_android:dir search;
+dontaudit kcmdlinectrl sysfs_dt_firmware_android:file { getattr open read };
 dontaudit kcmdlinectrl vendor_property_type:file read;
