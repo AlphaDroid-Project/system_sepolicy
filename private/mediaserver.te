@@ -81,8 +81,10 @@ allow mediaserver appdomain:fifo_file { getattr read write };
 
 allow mediaserver rpmsg_device:chr_file rw_file_perms;
 
-# Inter System processes communicate over named pipe (FIFO)
-allow mediaserver system_server:fifo_file r_file_perms;
+# Inter System processes communicate over named pipe (FIFO).
+# write is required so system_server can binder.dump() media.resource_manager
+# (and similar) into a pipe it owns — used for fullscreen-video codec detect.
+allow mediaserver system_server:fifo_file { r_file_perms write };
 
 r_dir_file(mediaserver, media_rw_data_file)
 
